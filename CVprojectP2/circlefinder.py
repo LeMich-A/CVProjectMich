@@ -1,5 +1,6 @@
 import cv2 as cv
 import numpy as np
+from calculateXYZ import calculateXYZ
 
 def detect_and_draw_circles(frame, framecnt):
     # Convert the frame to grayscale
@@ -28,18 +29,21 @@ def detect_and_draw_circles(frame, framecnt):
         # Visualize the best circle
         best_circle = circles[0][0]  # Assuming the first circle is the best
         circ = cv.cvtColor(gray, cv.COLOR_GRAY2BGR)
+        cx, cy = centers[0]
+        x, y, z = calculateXYZ(cx, cy)
         cv.circle(circ, (best_circle[0], best_circle[1]), best_circle[2], [0, 255, 0], 2)
         cv.circle(circ, (best_circle[0], best_circle[1]), 5, [0, 0, 255], -1)
-        cv.putText(circ, f'Center: ({best_circle[0]}, {best_circle[1]})', (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
+        cv.putText(circ, f'Center: ({x}, {y}, {z})', (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
 
         cv.imshow('Best Circle', circ)
         cv.imwrite(f"Frame_Dump/Best_Circle_Detected{framecnt}.png", circ)
         cv.waitKey(10)
 
-        return centers[0]
+        return x, y, z  # Return x, y, z instead of just centers[0]
 
     else:
         return None
+
 
 
 

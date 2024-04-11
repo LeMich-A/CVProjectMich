@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 
+
 def detect_and_draw_circles(frame, framecnt):
     # Convert the frame to grayscale
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
