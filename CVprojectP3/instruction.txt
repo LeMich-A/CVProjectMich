@@ -1,0 +1,5 @@
+>record a video of the checkerboard and the coins in the frame while the coin is moving around .
+
+>ask brian how to relate them , what does he want
+
+>try to run video reader to see if the coordinates change.,,,, lowkeyy we done .
