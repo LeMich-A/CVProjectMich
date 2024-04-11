@@ -1,0 +1,3 @@
+> do webcamreader to get the output for calib camera and all
+>once we have those parameters run the perspective calibration to have s factor
+>after we run the video processor for out results .
